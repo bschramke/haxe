@@ -56,6 +56,12 @@ extern class Sys {
 	static function environment() : Map<String,String>;
 
 	/**
+		Replaces the each environment variable in the given string with the value of the variable.
+		Returns a string with each environment variable replaced by its value.
+	**/
+	static function expandEnvironmentVariables( s : String ) : String;
+
+	/**
 		Suspend the current execution for the given time (in seconds).
 	**/
 	static function sleep( seconds : Float ) : Void;

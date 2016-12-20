@@ -70,7 +70,12 @@
 	public static function putEnv( s : String, v : String ) : Void {
 		untyped put_env(s.__s,if( v == null ) null else v.__s);
 	}
-
+	
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var r = ~/%([^ ]*)%|\$\{([^ ]*)\}|\$([^ ]*)/i;
+		return r.replace(s,getEnv("$1"));
+	}
+	
 	public static function sleep( seconds : Float ) : Void {
 		_sleep(seconds);
 	}
