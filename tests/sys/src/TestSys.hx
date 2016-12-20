@@ -21,6 +21,7 @@ class TestSys extends TestCommandBase {
 		Sys.putEnv("foo", "value");
 		assertEquals("my/test/value", Sys.expandEnvironmentVariables("my/test/${foo}"));
 		#end
+		assertEquals("my/test/null", Sys.expandEnvironmentVariables("my/test/${invalid}"));
 	}
 
 	function testProgramPath() {
