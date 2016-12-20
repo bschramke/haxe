@@ -19,7 +19,7 @@ class TestSys extends TestCommandBase {
 	function testExpandEnv() {
 		#if !(java || php || lua)
 		Sys.putEnv("foo", "value");
-		assertEquals("my/test/value", Sys.expandEnvironmentVariables("my/test/${FOO}"));
+		assertEquals("my/test/value", Sys.expandEnvironmentVariables("my/test/${foo}"));
 		#end
 	}
 
