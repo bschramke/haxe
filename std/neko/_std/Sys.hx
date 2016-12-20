@@ -72,8 +72,11 @@
 	}
 	
 	public static function expandEnvironmentVariables( s : String ) : String {
-        var r = ~/%([^ ]*)%|\$\{([^ ]*)\}|\$([^ ]*)/i;
-		return r.replace(s,getEnv("$1"));
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
 	}
 	
 	public static function sleep( seconds : Float ) : Void {
