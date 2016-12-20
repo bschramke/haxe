@@ -59,8 +59,11 @@ class Sys {
 		return argv.slice(1);
 	}
 
-	public static function getEnv( s : String ) : String {
-		return environ.get(s);
+	public static function getEnv( s : String, ?d : String ) : String {
+        var v = environ.get(s);
+        if (v == null)
+            return d;
+		return v;
 	}
 
 	public static function putEnv( s : String, v : String ) : Void {

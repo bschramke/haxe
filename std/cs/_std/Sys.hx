@@ -49,9 +49,12 @@ class Sys {
 		return _args.copy();
 	}
 
-	public static inline function getEnv( s : String ) : String
+	public static inline function getEnv( s : String, ?d : String ) : String
 	{
-		return Environment.GetEnvironmentVariable(s);
+		var v = Environment.GetEnvironmentVariable(s);
+		if( v == null )
+			return d;
+		return v;
 	}
 
 	public static function putEnv( s : String, v : String ) : Void

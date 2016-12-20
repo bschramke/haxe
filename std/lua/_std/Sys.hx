@@ -113,8 +113,11 @@ class Sys {
 		lua.lib.lfs.Lfs.chdir(s);
 	}
 
-	public inline static function getEnv(s : String) : String {
-		return lua.Os.getenv(s);
+	public inline static function getEnv(s : String, ?d : String ) : String {
+        var v = lua.Os.getenv(s);
+        if (v == null)
+            return d;
+		return v;
 	}
 	public inline static function putEnv(s : String, v : String ) : Void {
 		throw "not supported";

@@ -34,9 +34,9 @@
 		return untyped __call__('array_key_exists', 'argv', __var__('_SERVER')) ? __call__('new _hx_array', __call__('array_slice', __var__('_SERVER', 'argv'), 1)) : [];
 	}
 
-	public static function getEnv( s : String ) : String {
+	public static function getEnv( s : String, ?d : String ) : String {
 		var ret:Dynamic = untyped __call__("getenv", s);
-		return ret == false ? null : ret;
+		return ret == false ? d : ret;
 	}
 
 	public static function putEnv( s : String, v : String ) : Void {

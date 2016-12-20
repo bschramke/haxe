@@ -41,9 +41,9 @@ extern class Sys {
 	static function args() : Array<String>;
 
 	/**
-		Returns the value of the given environment variable.
+		Returns the value of the given environment variable or the given default value.
 	**/
-	static function getEnv( s : String ) : String;
+	static function getEnv( s : String, ?d : String = null ) : String;
 
 	/**
 		Set the value of the given environment variable.

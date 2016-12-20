@@ -46,9 +46,12 @@ using haxe.Int64;
 		return java.Lib.array(_args);
 	}
 
-	public static function getEnv( s : String ) : String
+	public static function getEnv( s : String, ?d : String ) : String
 	{
-		return java.lang.System.getenv(s);
+        var v = java.lang.System.getenv(s)
+        if (v == null)
+            return d;
+		return v;
 	}
 
 	public static function putEnv( s : String, v : String ) : Void

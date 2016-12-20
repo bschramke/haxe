@@ -43,9 +43,9 @@ import sys.io.FileInput;
 		}
 	}
 
-	public static function getEnv( s : String ) : String {
+	public static function getEnv( s : String, ?d : String ) : String {
 		var value = Global.getenv(s);
-		return value == false ? null : value;
+		return value == false ? d : value;
 	}
 
 	public static inline function putEnv( s : String, v : String ) : Void {

@@ -60,10 +60,10 @@
 		return r;
 	}
 
-	public static function getEnv( s : String ) : String {
+	public static function getEnv( s : String, ?d : String ) : String {
 		var v = get_env(untyped s.__s);
 		if( v == null )
-			return null;
+			return d;
 		return new String(v);
 	}
 

@@ -70,10 +70,10 @@ class Sys {
 		return @:privateAccess new sys.io.FileOutput(file_stderr());
 	}
 
-	public static function getEnv( s : String ) : String {
+	public static function getEnv( s : String, ?d : String ) : String {
 		var v = get_env(getPath(s));
 		if( v == null )
-			return null;
+			return d;
 		return makePath(v);
 	}
 
