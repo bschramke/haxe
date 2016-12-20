@@ -65,6 +65,14 @@ import cpp.NativeSys;
 		NativeSys.put_env(s,v);
 	}
 
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
+	}
+	
 	public static function sleep( seconds : Float ) : Void {
 		NativeSys.sys_sleep(seconds);
 	}

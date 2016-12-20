@@ -70,6 +70,14 @@ using haxe.Int64;
 		return _env;
 	}
 
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
+	}
+	
 	public static function sleep( seconds : Float ) : Void
 	{
 		try

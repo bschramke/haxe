@@ -72,6 +72,14 @@ class Sys {
 		return environ;
 	}
 
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
+	}
+	
 	public static function sleep( seconds : Float ) : Void {
 		python.lib.Time.sleep(seconds);
 	}

@@ -91,6 +91,14 @@ class Sys {
 		return h;
 	}
 
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
+	}
+	
 	@:hlNative("std","sys_sleep")
 	public static function sleep( seconds : Float ) : Void {
 	}

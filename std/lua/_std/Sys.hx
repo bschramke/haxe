@@ -120,6 +120,14 @@ class Sys {
 		throw "not supported";
 	}
 
+	public static function expandEnvironmentVariables( s : String ) : String {
+        var ereg = ~/\${([^}]+)}/ig;
+		return ereg.map(s,function(r) {
+            var m = r.matched(1);
+            return getEnv(m);
+		});
+	}
+	
 	public inline static function setTimeLocale(loc : String) : Bool  {
 		// TODO Verify
 		return lua.Os.setlocale(loc) != null;
