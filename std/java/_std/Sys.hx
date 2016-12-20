@@ -48,7 +48,7 @@ using haxe.Int64;
 
 	public static function getEnv( s : String, ?d : String ) : String
 	{
-        var v = java.lang.System.getenv(s)
+        var v = java.lang.System.getenv(s);
         if (v == null)
             return d;
 		return v;
